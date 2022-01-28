@@ -9,6 +9,24 @@ import MainSettings from "./Scenes/MainSettings";
 import * as Colyseus from "colyseus.js"
 
 const client = new Colyseus.Client('ws://localhost:3000');
+const room = client.joinOrCreate("myRoom", {
+	accessToken: "afsfasfasf45wsgh6ear45uh6sertj45h6srtj4"
+});
+
+/*
+client.joinOrCreate("world", {
+  accessToken: yourFacebookAccessToken
+
+}).then((room) => {
+  // success
+
+}).catch((err) => {
+  // handle error...
+  err.code // 400
+  err.message // "bad access token"
+});
+
+*/
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
 	width: 800,

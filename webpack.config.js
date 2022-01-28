@@ -54,5 +54,9 @@ module.exports = {
 	],
 	devServer: {
 		open: true
+	},
+	
+	experiments: {
+		topLevelAwait: true,
 	}
 };
