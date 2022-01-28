@@ -8,7 +8,7 @@ import MainGame from "./Scenes/MainGame";
 import MainSettings from "./Scenes/MainSettings";
 import * as Colyseus from "colyseus.js"
 
-const client = new Colyseus.Client('ws://localhost:2567');
+const client = new Colyseus.Client('ws://localhost:3000');
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
 	width: 800,

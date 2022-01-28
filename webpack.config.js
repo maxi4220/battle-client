@@ -31,10 +31,6 @@ module.exports = {
 		new CopyWebpackPlugin({
 			patterns: [
 				{
-					from: './node_modules/phaser/dist/phaser.min.js',
-					to: 'lib'
-				},
-				{
 					from: './src/*.html',
 					to: '[name][ext]'
 				},
