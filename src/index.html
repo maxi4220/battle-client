@@ -9,10 +9,18 @@
 	<link rel="stylesheet" href="app.css" type="text/css" />
 	<!--script src="lib/phaser.min.js"></script-->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/phaser/3.60.0-beta.3/phaser.min.js"></script>
-	<script src="colyseus.js"></script>
 </head>
 <body>
 	<script>
+		window["fbLogin"] = function () {
+			FB.login(function(response) {
+			if (response.status === 'connected') {
+				// Logged into your webpage and Facebook.
+			} else {
+				// The person is not logged into your webpage or we are unable to tell. 
+			}
+			});
+		};
 		window.fbAsyncInit = function() {
 			FB.init({
 				appId            : '1538850546484971',
@@ -27,8 +35,8 @@
 					// the user's ID, a valid access token, a signed
 					// request, and the time the access token 
 					// and signed request each expire.
-					var uid = response.authResponse.userID;
-					var accessToken = response.authResponse.accessToken;
+					window["uid"] = response.authResponse.userID;
+					window["accessToken"] = response.authResponse.accessToken;
 					console.log(uid);
 					console.log(accessToken);
 				} else if (response.status === 'not_authorized') {
