@@ -1,3 +1,5 @@
+import 'phaser';
+
 export default class Utilities {
 	/**
 	 * Logs a particular message to the console.
@@ -15,4 +17,5 @@ export default class Utilities {
 	public static LogSceneMethodEntry(sceneName: string, method: string): void {
 		this.Log("Entered " + sceneName + " " + method + "()");
 	}
+
 }

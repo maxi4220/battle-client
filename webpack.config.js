@@ -35,6 +35,10 @@ module.exports = {
 					to: '[name][ext]'
 				},
 				{
+					from: './src/*.js',
+					to: '[name][ext]'
+				},
+				{
 					from: './src/*.css',
 					to: '[name][ext]'
 				},

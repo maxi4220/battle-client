@@ -1,17 +1,13 @@
 import 'phaser';
-import Boot from "./Scenes/Boot";
-import Preloader from "./Scenes/Preloader";
-import MainMenu from "./Scenes/MainMenu";
-import SplashScreen from "./Scenes/SplashScreen";
+import Boot from "./scenes/Boot";
+import Preloader from "./scenes/Preloader";
+import MainMenu from "./scenes/MainMenu";
+import SplashScreen from "./scenes/SplashScreen";
 import Utilities from "./Utilities";
-import MainGame from "./Scenes/MainGame";
-import MainSettings from "./Scenes/MainSettings";
-import * as Colyseus from "colyseus.js"
-
-const client = new Colyseus.Client('ws://localhost:3000');
-const room = client.joinOrCreate("myRoom", {
-	accessToken: "afsfasfasf45wsgh6ear45uh6sertj45h6srtj4"
-});
+import MainGame from "./scenes/MainGame";
+import MainSettings from "./scenes/MainSettings";
+import { EventHandler } from './handlers/eventHandler';
+import { UserEvents } from './constants';
 
 /*
 client.joinOrCreate("world", {
@@ -42,16 +38,23 @@ export default class Game extends Phaser.Game {
 
 		super(config);
 
+
+		this.init();
+	}
+
+	init() {
+
 		this.scene.add(Boot.Name, Boot);
 		this.scene.add(Preloader.Name, Preloader);
 		this.scene.add(SplashScreen.Name, SplashScreen);
 		this.scene.add(MainMenu.Name, MainMenu);
 		this.scene.add(MainGame.Name, MainGame);
 		this.scene.add(MainSettings.Name, MainSettings);
+		
 		this.scene.start(Boot.Name);
-		Utilities.Log(JSON.stringify(client));
 
 	}
+
 }
 
 /**

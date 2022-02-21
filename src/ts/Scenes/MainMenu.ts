@@ -1,6 +1,12 @@
 import Utilities from "../Utilities";
 import MainGame from "./MainGame";
 import MainSettings from "./MainSettings";
+import { EventHandler } from "../handlers/eventHandler";
+import { UserEvents } from "../constants";
+import { FacebookUser } from "../models/facebookUser";
+import { AuthHandler } from "../handlers/authHandler";
+import { ColyHandler } from "../handlers/colyHandler";
+
 
 export default class MainMenu extends Phaser.Scene {
 	/**
@@ -24,11 +30,41 @@ export default class MainMenu extends Phaser.Scene {
 			.setAlign("center")
 			.setOrigin(0.5);
 		newGameText.setInteractive();
+		
 		newGameText.on("pointerdown", () => { 
-			if ( !window["accessToken"] && !window["uid"] ) {
-				window["fbLogin"]();
+			if ( !sessionStorage.getItem("fb_uid") && !sessionStorage.getItem("fb_accessToken") ) {
+				window["FB"].login( ( facebookUser: FacebookUser ) => {
+					if ( facebookUser.status === "connected" ) {
+
+						console.log("Validating facebook user token: " + facebookUser.authResponse.userID);
+
+
+
+						
+						AuthHandler.validateFBUserToken( facebookUser, ( validToken: boolean ) => {
+							if ( validToken ) {
+								ColyHandler.joinRoom( facebookUser, ( result ) => {
+									console.log("res1");
+									console.log(result);
+									this.scene.start(MainGame.Name);
+									console.log("token valid!");
+								}, ( a, b, c ) => {
+									console.log(a);
+									console.log(b);
+									console.log(c);
+								});
+							} else {
+								console.log("token not valid");
+							}
+						});	
+
+						
+					} else {
+						console.log("not connected?");
+					}
+					
+				});
 			}			
-			this.scene.start(MainGame.Name); 
 			
 		}, this);
 
