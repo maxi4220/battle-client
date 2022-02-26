@@ -1,4 +1,4 @@
-import Preloader from "./Preloader";
+import Preloader from "./preloader.scene";
 import Utilities from "../Utilities";
 
 export default class Boot extends Phaser.Scene {

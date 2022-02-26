@@ -1,12 +1,12 @@
 import 'phaser';
-import Boot from "./scenes/Boot";
-import Preloader from "./scenes/Preloader";
-import MainMenu from "./scenes/MainMenu";
-import SplashScreen from "./scenes/SplashScreen";
+import Boot from "./scenes/boot.scene";
+import Preloader from "./scenes/preloader.scene";
+import MainMenu from "./scenes/menu.scene";
+import SplashScreen from "./scenes/splash-screen.scene";
 import Utilities from "./Utilities";
-import MainGame from "./scenes/MainGame";
-import MainSettings from "./scenes/MainSettings";
-import { EventHandler } from './handlers/eventHandler';
+import MainGame from "./scenes/game.scene";
+import MainSettings from "./scenes/settings.scene";
+import { EventHandler } from './handlers/event.handler';
 import { UserEvents } from './constants';
 
 /*

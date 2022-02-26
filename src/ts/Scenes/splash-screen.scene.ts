@@ -1,5 +1,5 @@
 import Utilities from "../Utilities";
-import MainMenu from "./MainMenu";
+import MainMenu from "./menu.scene";
 
 export default class SplashScreen extends Phaser.Scene {
 	/**

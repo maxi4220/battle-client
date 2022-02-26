@@ -1,4 +1,4 @@
-import SplashScreen from "./SplashScreen";
+import SplashScreen from "./splash-screen.scene";
 import Utilities from "../Utilities";
 
 export default class Preloader extends Phaser.Scene {

@@ -7,13 +7,8 @@ export class ColyHandler {
 	static client = new Colyseus.Client(env.colyServer);
 	static room = null;
 	
-	static joinRoom(fbUser: FacebookUser, success: Function, reject: Function) {
-		this.room = this.client.joinOrCreate("myRoom", fbUser)
-		.then( ( result ) => {
-			success( result );
-		}).catch( ( error => {
-			reject( error );
-		}));
+	static joinRoom(fbUser: FacebookUser) {
+		return this.room = this.client.joinOrCreate("myRoom", fbUser);
 	}
 
 	static get(url: string, queryString: string) {
@@ -37,7 +32,8 @@ export class ColyHandler {
 			headers:{
 			  'Content-Type': 'application/json'
 			}
-		  }).then(res => res.json())
+		  })
+		  .then(res => res.json())
 		  .catch(error => console.error('Error:', error))
 		  .then(response => console.log('Success:', response));
 	}

@@ -18,4 +18,20 @@ export default class Utilities {
 		this.Log("Entered " + sceneName + " " + method + "()");
 	}
 
+	/**
+	 * Builds the URL for gets with queryString
+	 * @param url url to where make the request
+	 * @param params array of params that will be part of the url
+	 */
+	public static BuildGetURL(url: string, params: Array<any>) {
+		const paramPositions = url.split("/");
+		let i = 0;
+		for ( let pos in paramPositions ) {
+			if ( paramPositions[pos].indexOf(":") > -1 ) {
+				paramPositions[pos] = params[i];
+				i++;
+			}
+		}		
+		return paramPositions.join("/");
+	}
 }
