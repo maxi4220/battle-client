@@ -32,34 +32,36 @@ export default class MainMenu extends Phaser.Scene {
 		newGameText.setInteractive();
 		
 		newGameText.on("pointerdown", () => { 
-			if ( !sessionStorage.getItem("fb_userId") || 
-					 !sessionStorage.getItem("fb_accessToken") ||
-					 !sessionStorage.getItem("fb_name") ||
-					 !sessionStorage.getItem("fb_expiresIn") ) {
+
+			const fb_accessToken = Utilities.GetCookie("fb_accessToken");
+
+			if ( !fb_accessToken ) {
+
 				window["FB"].login( ( facebookUser: FacebookUser ) => {
+					console.log(facebookUser);
 					if ( facebookUser.status === "connected" ) {
-
 						console.log("Validating facebook user token: " + facebookUser.authResponse.userID);
-
 						AuthHandler.validateFBUserToken( facebookUser)
 						.then((result)=>{
-							if ( result && result.data ) {
+							if ( result && result.data && result.data.fbUser === undefined ) {
 								
 								facebookUser.authResponse.accessToken = result.data.accessToken;
 								facebookUser.authResponse.userID = result.data.id;
 								facebookUser.authResponse.name = result.data.name;
-
-								sessionStorage.setItem("fb_accessToken", facebookUser.authResponse.accessToken);
-								sessionStorage.setItem("fb_userId", facebookUser.authResponse.userID);
-								sessionStorage.setItem("fb_name", facebookUser.authResponse.name);
-								sessionStorage.setItem("fb_expiresIn", facebookUser.authResponse.expiresIn.toString());
-								
-								this.joinRoom( facebookUser );
+				
+								const expiresIn = facebookUser.authResponse.expiresIn.toString();
+				
+								document.cookie = `fb_accessToken=${facebookUser.authResponse.accessToken};max-age=${expiresIn}`
+								document.cookie = `fb_userId=${facebookUser.authResponse.userID};max-age=${expiresIn}`
+								document.cookie = `fb_name=${facebookUser.authResponse.name};max-age=${expiresIn}`
+								document.cookie = `fb_expiresIn=${expiresIn};max-age=${expiresIn}`
+								this.joinRoom( facebookUser );		
 							} else {
 								console.log("token not valid");
 							}
 						})
-						.catch( ( error ) => { console.log(error); });						
+						.catch( ( error ) => { console.log(error);});	
+						
 					} else {
 						console.log("not connected?");
 					}
@@ -68,10 +70,11 @@ export default class MainMenu extends Phaser.Scene {
 
 			} else {
 				const facebookUser = new FacebookUser();
-				facebookUser.authResponse.accessToken = sessionStorage.getItem("fb_accessToken");
-				facebookUser.authResponse.userID = sessionStorage.getItem("fb_userId");
-				facebookUser.authResponse.name = sessionStorage.getItem("fb_name");
-				facebookUser.authResponse.expiresIn = Number(sessionStorage.getItem("fb_expiresIn"));
+				facebookUser.authResponse.accessToken = Utilities.GetCookie("fb_accessToken");
+				console.log(facebookUser.authResponse.accessToken);
+				facebookUser.authResponse.userID = Utilities.GetCookie("fb_userId");
+				facebookUser.authResponse.name = Utilities.GetCookie("fb_name");
+				facebookUser.authResponse.expiresIn = Number(Utilities.GetCookie("fb_expiresIn"));
 
 				this.joinRoom( facebookUser );
 			}
@@ -85,18 +88,18 @@ export default class MainMenu extends Phaser.Scene {
 		settingsText.on("pointerdown", () => { this.scene.start(MainSettings.Name); }, this);
 	}
 
-	private joinRoom( facebookUser: FacebookUser ){
-		
+	private joinRoom( facebookUser: FacebookUser ) {
 		ColyHandler.joinRoom( facebookUser)
 		.then( ( result ) => {
 			
 			this.scene.start(MainGame.Name);
-			console.log("Hello, ", facebookUser.authResponse.name, "!");
+			console.log("Hello,", facebookUser.authResponse.name, "!");
 
 		}).catch( ( error ) => {
 			console.log( error );
 		});
 	}
+
 	public update(): void {
 		// Update logic, as needed.
 	}
