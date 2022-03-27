@@ -4,6 +4,7 @@ export const UserEvents = {
 
 export const URLs = {
     auth: {
-        checkToken: "users/:id/token/:token"
+        checkToken: "users/:id/token/:token",
+        registerLogin: "users/:id/login"
     }
 };
