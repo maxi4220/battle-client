@@ -5,6 +5,7 @@
 		"esModuleInterop": true,
 		"rootDir": "./src/ts/",
 		"sourceMap": true,
-		"moduleResolution": "node"
+		"moduleResolution": "node",
+		"skipLibCheck": true
 	}
 }
