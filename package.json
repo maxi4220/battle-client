@@ -13,8 +13,8 @@
 		"url": "https://jamesrskemp.com"
 	},
 	"engines": {
-    "node": "14.x"
-  },
+		"node": "14.x"
+	},
 	"homepage": "https://github.com/JamesSkemp/phaser-3-vsc-typescript-nodejs",
 	"dependencies": {
 		"@colyseus/arena": "^0.14.14",
@@ -30,7 +30,9 @@
 	},
 	"scripts": {
 		"start": "webpack --mode production && node public/index.js",
-		"build": "webpack --mode production",
+		"build": "npm run clean && tsc && node node_modules/copyfiles/copyfiles package.json ./public && node node_modules/copyfiles/copyfiles arena.env ./public && node node_modules/copyfiles/copyfiles -u 1 src/static/* ./public",
+		"install": "npm run clean && tsc && node node_modules/copyfiles/copyfiles package.json ./public && node node_modules/copyfiles/copyfiles arena.env ./public && node node_modules/copyfiles/copyfiles -u 1 src/static/* ./public",
+		"clean": "node node_modules/rimraf/bin ./public",
 		"build-dev": "webpack --mode development",
 		"start:dev": "webpack serve --https --mode development",
 		"start:prod": "webpack serve --mode production --https && node public/index.js",
@@ -52,8 +54,8 @@
 		"ts-node-dev": "^1.0.0-pre.63",
 		"typescript": "^4.3.5",
 		"uwebsockets-express": "^1.1.14",
-		"webpack": "^5.50.0",
-		"webpack-cli": "^4.7.2",
+		"webpack": "^5.72.0",
+		"webpack-cli": "^4.9.2",
 		"webpack-dev-server": "^4.7.3"
 	}
 }

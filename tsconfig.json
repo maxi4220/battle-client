@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+    "outDir": "public",
 		"target": "es2017",
 		"module": "esnext",
 		"esModuleInterop": true,
@@ -7,5 +8,8 @@
 		"sourceMap": true,
 		"moduleResolution": "node",
 		"skipLibCheck": true
-	}
+	},
+  "include": [
+    "src"
+  ]
 }
