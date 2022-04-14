@@ -12,6 +12,9 @@
 		"email": "strivinglife@gmail.com",
 		"url": "https://jamesrskemp.com"
 	},
+	"engines": {
+    "node": "14.x"
+  },
 	"homepage": "https://github.com/JamesSkemp/phaser-3-vsc-typescript-nodejs",
 	"dependencies": {
 		"@colyseus/arena": "^0.14.14",
@@ -26,9 +29,10 @@
 		"superagent": "^3.8.1"
 	},
 	"scripts": {
+		"start": "webpack --mode production && node public/index.js",
 		"build": "webpack --mode production",
-		"build-dev": "webpack --mode none",
-		"start:dev": "webpack serve --https ",
+		"build-dev": "webpack --mode development",
+		"start:dev": "webpack serve --https --mode development",
 		"start:prod": "webpack serve --mode production --https && node public/index.js",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx || (exit 0)"
 	},
