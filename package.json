@@ -30,8 +30,8 @@
 	},
 	"scripts": {
 		"start": "webpack --mode production && node public/index.js",
-		"build": "npm run clean && tsc && node node_modules/copyfiles/copyfiles package.json ./public && node node_modules/copyfiles/copyfiles arena.env ./public && node node_modules/copyfiles/copyfiles -u 1 src/static/* ./public",
-		"install": "npm run clean && tsc && node node_modules/copyfiles/copyfiles package.json ./public && node node_modules/copyfiles/copyfiles arena.env ./public && node node_modules/copyfiles/copyfiles -u 1 src/static/* ./public",
+		"build": "npm run clean && webpack --mode production",
+		"install": "webpack --mode production",
 		"clean": "node node_modules/rimraf/bin ./public",
 		"build-dev": "webpack --mode development",
 		"start:dev": "webpack serve --https --mode development",
