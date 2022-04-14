@@ -29,13 +29,13 @@
 		"superagent": "^3.8.1"
 	},
 	"scripts": {
-		"start": "webpack --mode production && node public/index.js",
+		"start": "webpack --mode production && node index.js",
 		"build": "npm run clean && webpack --mode production",
 		"install": "webpack --mode production",
 		"clean": "node node_modules/rimraf/bin ./public",
 		"build-dev": "webpack --mode development",
 		"start:dev": "webpack serve --https --mode development",
-		"start:prod": "webpack serve --mode production --https && node public/index.js",
+		"start:prod": "webpack serve --mode production --https && node index.js",
 		"lint": "eslint . --ext .js,.jsx,.ts,.tsx || (exit 0)"
 	},
 	"devDependencies": {
