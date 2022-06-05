@@ -4,7 +4,7 @@
 	"description": "Starter Project for Phaser 3 with TypeScript, NodeJS, and VS Code.",
 	"repository": {
 		"type": "git",
-		"url": "git+ssh://git@github.com:JamesSkemp/phaser-3-vsc-typescript-nodejs.git"
+		"url": "https://github.com/maxi4220/battle-client.git"
 	},
 	"private": true,
 	"author": {
@@ -13,7 +13,18 @@
 		"url": "https://jamesrskemp.com"
 	},
 	"engines": {
-		"node": "14.x"
+		"node": "14.x",
+		"npm": "6.x"
+	},
+	"scripts": {
+		"start": "webpack serve --mode production --https && node index.js",
+		"build": "npm run clean && webpack --mode production",
+		"install": "webpack --mode production",
+		"clean": "node node_modules/rimraf/bin ./public",
+		"build-dev": "webpack --mode development",
+		"start:dev": "webpack serve --https --mode development",
+		"start:prod": "webpack serve --mode production --https && node index.js",
+		"lint": "eslint . --ext .js,.jsx,.ts,.tsx || (exit 0)"
 	},
 	"homepage": "https://github.com/JamesSkemp/phaser-3-vsc-typescript-nodejs",
 	"dependencies": {
@@ -28,16 +39,6 @@
 		"rxjs": "^7.5.4",
 		"serve-index": "^1.8.0",
 		"superagent": "^3.8.1"
-	},
-	"scripts": {
-		"start": "webpack --mode production && node index.js",
-		"build": "npm run clean && webpack --mode production",
-		"install": "webpack --mode production",
-		"clean": "node node_modules/rimraf/bin ./public",
-		"build-dev": "webpack --mode development",
-		"start:dev": "webpack serve --https --mode development",
-		"start:prod": "webpack serve --mode production --https && node index.js",
-		"lint": "eslint . --ext .js,.jsx,.ts,.tsx || (exit 0)"
 	},
 	"devDependencies": {
 		"@colyseus/uwebsockets-transport": "^0.14.24",
