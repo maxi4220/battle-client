@@ -10,6 +10,8 @@
 		"skipLibCheck": true
 	},
   "include": [
-    "src", 
-		"src/index.js"  ]
+    "src/**/*", 
+    "src/**/**/*", 
+		"src/index.js"],
+		"exclude": ["node_modules", "src/**/*.spec.ts"]
 }
