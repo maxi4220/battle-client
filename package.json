@@ -18,13 +18,9 @@
 	},
 	"scripts": {
 		"start": "webpack serve --mode production --https && node index.js",
-		"build": "npm run clean && webpack --mode production",
-		"install": "npm run clean && webpack --mode production",
-		"clean": "node node_modules/rimraf/bin ./public",
+		"build": "npm run clean && webpack --mode production",		
 		"build-dev": "webpack --mode development",
-		"start:dev": "webpack serve --https --mode development",
-		"start:prod": "webpack serve --mode production --https && node index.js",
-		"lint": "eslint . --ext .js,.jsx,.ts,.tsx || (exit 0)"
+		"start:dev": "webpack serve --https --mode development"
 	},
 	"homepage": "https://github.com/JamesSkemp/phaser-3-vsc-typescript-nodejs",
 	"dependencies": {
