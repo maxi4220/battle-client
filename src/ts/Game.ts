@@ -3,7 +3,7 @@ import Boot from "./scenes/boot.scene";
 import Preloader from "./scenes/preloader.scene";
 import MainMenu from "./scenes/menu.scene";
 import SplashScreen from "./scenes/splash-screen.scene";
-import Utilities from "./Utilities";
+import Utilities from "./utilities";
 import MainGame from "./scenes/game.scene";
 import MainSettings from "./scenes/settings.scene";
 import { EventHandler } from './handlers/event.handler';
