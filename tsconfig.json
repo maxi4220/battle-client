@@ -11,7 +11,5 @@
 	},
   "include": [
     "src/**/*", 
-    "src/**/**/*", 
-		"src/index.js"],
-		"exclude": ["node_modules", "src/**/*.spec.ts"]
+		"src/index.js"]
 }
