@@ -1,4 +1,4 @@
-import Utilities from "../Utilities";
+import Utilities from "../utilities";
 import MainGame from "./game.scene";
 import MainSettings from "./settings.scene";
 import { EventHandler } from "../handlers/event.handler";

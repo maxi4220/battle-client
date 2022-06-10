@@ -2,7 +2,7 @@ import axios from "axios";
 import { URLs } from "../constants";
 import { env } from "../environment";
 import { FacebookUser } from "../models/facebookUser";
-import Utilities from "../Utilities";
+import Utilities from "../utilities";
 
 export class AuthHandler {
     static validateFBUserToken( fbUser: FacebookUser) {

@@ -1,4 +1,4 @@
-import Utilities from "../Utilities";
+import Utilities from "../utilities";
 
 export default class MainGame extends Phaser.Scene {
 	/**
