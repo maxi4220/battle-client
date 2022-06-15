@@ -1,15 +1,30 @@
 {
-	"compilerOptions": {
-    "outDir": "public",
-		"target": "es2017",
-		"module": "esnext",
-		"esModuleInterop": true,
-		"rootDir": "./src/ts/",
-		"sourceMap": true,
-		"moduleResolution": "node",
-		"skipLibCheck": true
-	},
-  "include": [
-    "src/**/*", 
-		"src/index.js"]
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "skipLibCheck": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
+    "paths": {
+      "handlers/*": ["src/ts/handlers/*"],
+      "models/*": ["src/ts/models/*"],
+      "scenes/*": ["src/ts/scenes/*"],
+    }
+	}
 }
