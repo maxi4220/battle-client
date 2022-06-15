@@ -17,11 +17,7 @@
 		"npm": "6.x"
 	},
 	"scripts": {
-		"start": "webpack serve --mode production --https && node index.js",
-		"build": "npm run clean && webpack --mode production",
-		"clean": "node node_modules/rimraf/bin ./public",		
-		"build-dev": "webpack --mode development",
-		"start:dev": "webpack serve --https --mode development"
+		"build": "webpack"
 	},
 	"homepage": "https://github.com/JamesSkemp/phaser-3-vsc-typescript-nodejs",
 	"dependencies": {
